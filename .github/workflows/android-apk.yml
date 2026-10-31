@@ -3,42 +3,35 @@ name: Build Android APK
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Kaynak kodunu al
         uses: actions/checkout@v4
-
       - name: Node.js kur
         uses: actions/setup-node@v4
         with:
           node-version: 20
-
       - name: Java 21 kur
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "21"
-
       - name: Bağımlılıkları kur
         run: npm install
-
       - name: Android projesini oluştur
         run: npx cap add android
-
+      - name: Uygulama ikonunu oluştur
+        run: npx capacitor-assets generate --android
       - name: Web uygulamasını senkronize et
         run: npx cap sync android
-
-      - name: APK oluştur
+      - name: Debug APK oluştur
         working-directory: android
         run: ./gradlew assembleDebug
-
-      - name: APK dosyasını yükle
+      - name: APK'yı yükle
         uses: actions/upload-artifact@v4
         with:
           name: yz-asistani-debug-apk
