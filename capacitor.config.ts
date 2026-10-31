@@ -4,11 +4,6 @@ const config: CapacitorConfig = {
   appId: 'tr.yzasistani.chat',
   appName: 'YZ Asistanı',
   webDir: 'www',
-  server: {
-    url: 'https://sohbet.yzasistani.tr',
-    cleartext: false,
-    androidScheme: 'https'
-  },
   android: {
     allowMixedContent: false,
     backgroundColor: '#ffffff'
