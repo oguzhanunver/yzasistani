@@ -24,6 +24,8 @@ jobs:
         run: npm install
       - name: Android projesini oluştur
         run: npx cap add android
+      - name: Kamera ve dosya seçiciyi etkinleştir
+        run: node scripts/patch-android.cjs
       - name: Uygulama ikonunu oluştur
         run: npx capacitor-assets generate --android
       - name: Web uygulamasını senkronize et
