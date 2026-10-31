@@ -63,7 +63,9 @@ const manifestPath = path.join(root, 'app/src/main/AndroidManifest.xml');
 if (fs.existsSync(manifestPath)) {
   let manifest = fs.readFileSync(manifestPath, 'utf8');
   if (!manifest.includes('android.permission.CAMERA')) {
-    manifest = manifest.replace('>', '>\n    <uses-permission android:name="android.permission.CAMERA" />', 1);
+    const manifestStart = manifest.indexOf('<manifest');
+    const manifestEnd = manifest.indexOf('>', manifestStart);
+    manifest = manifest.slice(0, manifestEnd + 1) + '\n    <uses-permission android:name="android.permission.CAMERA" />' + manifest.slice(manifestEnd + 1);
     fs.writeFileSync(manifestPath, manifest);
   }
 }
