@@ -4,6 +4,11 @@ const config: CapacitorConfig = {
   appId: 'tr.yzasistani.chat',
   appName: 'YZ Asistanı',
   webDir: 'www',
+  server: {
+    url: 'https://sohbet.yzasistani.tr',
+    cleartext: false,
+    androidScheme: 'https'
+  },
   android: {
     allowMixedContent: false,
     backgroundColor: '#ffffff'
@@ -11,7 +16,7 @@ const config: CapacitorConfig = {
   plugins: {
     SplashScreen: {
       launchAutoHide: true,
-      launchShowDuration: 1200,
+      launchShowDuration: 600,
       backgroundColor: '#ffffff',
       showSpinner: false,
       androidScaleType: 'CENTER_INSIDE',
