@@ -18,9 +18,6 @@ jobs:
         with:
           node-version: 20
 
-      - name: Android araçlarını kur
-        uses: android-actions/setup-android@v3
-
       - name: Bağımlılıkları kur
         run: npm install
 
